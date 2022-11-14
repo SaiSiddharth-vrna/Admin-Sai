@@ -1,0 +1,75 @@
+#material-tabs {
+    position        : relative;
+    display         : block;
+    padding         : 0;
+    border-radius   : 10px;
+    background-color: var(--surface-a);
+    box-shadow      : 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+
+    a {
+        font-family    : Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+        position       : relative;
+        display        : inline-block;
+        padding        : 10px 10px 10px 20px;
+        text-transform : capitalize;
+        font-size      : 14px;
+        color          : #858585;
+        text-align     : center;
+        text-decoration: none;
+        outline        : none;
+        width          : 175px;
+
+        &.active {
+            color: var(--vrna-secondary);
+        }
+
+        .tab-label {
+            vertical-align: super;
+            padding-left  : 10px;
+        }
+
+    }
+}
+
+#material-tabs>a:not(.active):hover {
+    background-color: inherit;
+    color           : #7c848a;
+}
+
+@media only screen and (max-width: 520px) {
+    .nav-tabs#material-tabs>li>a {
+        font-size: 11px;
+    }
+}
+
+.bottom-bar {
+    position          : absolute;
+    z-index           : 10;
+    bottom            : 0;
+    height            : 3px;
+    background        : var(--vrna-secondary);
+    display           : block;
+    left              : 0;
+    transition        : left .2s ease;
+    -webkit-transition: left .2s ease;
+}
+
+#tab1-tab.active~span.bottom-bar {
+    left : 10px;
+    width: 165px;
+}
+
+#tab2-tab.active~span.bottom-bar {
+    left : 185px;
+    width: 175px;
+}
+
+#tab3-tab.active~span.bottom-bar {
+    left : 360px;
+    width: 175px;
+}
+
+#tab4-tab.active~span.bottom-bar {
+    left : 535px;
+    width: 175px;
+}

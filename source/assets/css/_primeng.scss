@@ -1,0 +1,42 @@
+.p-tooltip {
+    &.success {
+        .p-tooltip-text {
+            background: var(--bs-success);
+            padding   : 2px 10px 4px 10px;
+        }
+    }
+
+    &.warning {
+        .p-tooltip-text {
+            background: var(--bs-warning);
+            padding   : 2px 10px 4px 10px;
+            color     : var(--surface-b);
+        }
+    }
+
+    &.danger {
+        .p-tooltip-text {
+            background: var(--bs-danger);
+            padding   : 2px 10px 4px 10px;
+        }
+    }
+}
+
+.p-datatable {
+    .p-datatable-thead>tr>th {
+        font-size       : 14px;
+        background-color: var(--surface-b) !important;
+    }
+}
+
+.p-inputnumber,
+.p-dropdown {
+    width: 100%;
+}
+
+.p-field {
+    textarea {
+        background-color: var(--surface-b);
+        border-color    : var(--surface-b);
+    }
+}
