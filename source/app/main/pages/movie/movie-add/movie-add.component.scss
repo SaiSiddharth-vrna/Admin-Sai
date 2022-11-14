@@ -1,0 +1,31 @@
+.helper-text {
+    font-size  : 12px;
+    color      :white;
+    font-weight: lighter;
+}
+
+::ng-deep .upload-form {
+    .p-inputwrapper {
+
+        .p-chips,
+        .p-inputtext,
+        .p-dropdown,
+        .p-multiselect {
+            width: 100%;
+            
+        }
+    }
+}
+
+.form-stepper {
+    background-color:black;
+    margin          : 3px;
+    padding         : 10px;
+    border-radius   : 10px;
+}
+.form-stepper  p-steps{
+    color: black;
+}
+.p-steps{
+    color:red;
+}

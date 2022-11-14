@@ -1,0 +1,43 @@
+::ng-deep .user-approve-table {
+    
+    .type-column {
+        min-width: 135px;
+        max-width: 140px;
+        background: white;
+
+        .p-tag {
+            min-width: 100px;
+        }
+    }
+
+    .customer-column {
+        min-width: 120px;
+        max-width: 125px;
+        background:white;
+    }
+
+    .action-column {
+        min-width: 250px;
+        max-width: 275px;
+        background:white;
+    }
+    .password-column{
+        min-width: 250px;
+        max-width: 275px;
+        background:white;
+    }
+    .date-column{
+        background:white;
+    }
+    .mobile-column{
+        background:white;
+    }
+    .name-column{
+        background:white;
+    }
+    .email-column{
+        background:white;
+    }
+    
+
+}

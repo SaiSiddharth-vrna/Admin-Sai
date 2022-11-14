@@ -1,0 +1,35 @@
+::ng-deep .movie-add-form {
+    .p-inputwrapper {
+        .p-chips,
+        .p-inputtext,
+        .p-inputnumber,
+        .p-dropdown,
+        .p-multiselect {
+            width: 100%;
+    
+        }
+    }
+
+    .action-buttons {
+        position: absolute;
+        width   : 100%;
+        bottom  : 0px;
+        padding : 10px;
+        background-color: white;
+        color: black;
+    }
+}
+
+.country-item-value {
+    
+    color: white;
+}
+.csk{
+    position: absolute;
+    left: 10%;
+}
+.sk{
+    position: absolute;
+    left: 15.5%;
+    width: 4.9%;
+}

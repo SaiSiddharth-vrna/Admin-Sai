@@ -1,0 +1,165 @@
+$width: 70px;
+
+.sidemenu {
+    width     : $width;
+    box-shadow: 0 .5rem 1rem rgba(#000, .35);
+    background-color: #000;
+   
+     
+
+    .sm-logo {
+        .sm-logo-abstract {
+            width: 40px;
+        }
+
+        .sm-logo-txt {
+            width: 30px;
+        }
+    }
+
+    .nav {
+        .nav-item {
+            position: relative;
+
+            &.active-parent {
+                .nav-link {
+                    color            : var(--vrna-primary);
+                    border-left-color: var(--vrna-primary);
+                }
+            }
+
+            .nav-link {
+                border-left-width: 2px;
+                border-left-color: transparent;
+                border-left-style: solid;
+                border-radius    : 0;
+                color            : #fff;
+                padding          : 10px 5px 10px 5px;
+
+                i.material-icons {
+                    font-size: 18px;
+                }
+
+                .menu-lable {
+                    font-size: 14px;
+                }
+
+                &.menu-active {
+                    color            : var(--vrna-primary);
+                    border-left-color: var(--vrna-primary);
+                }
+            }
+
+            ul.sub-menu {
+                list-style      : none;
+                display         : none;
+                height          : 0;
+                z-index         : 0;
+                padding         : 5px 0;
+                position        : absolute;
+                left            : $width;
+                width           : 190px;
+                top             : 5px;
+                text-align      : left;
+                background-color: var(--surface-a);
+                border-radius   : 3px;
+                border-left     : 2px solid #d5d478;
+                box-shadow      : 0 .5rem 1rem rgba(#000, .15);
+
+                li {
+                    display: block;
+                    width  : 100%;
+
+                    &:hover {
+                        a {
+                            background-color: #212529;
+                        }
+                    }
+
+                    a {
+                        text-decoration: none;
+                        padding        : 0.5rem 1rem 0.5rem 1rem;
+                        font-size      : 14px;
+                        color          : #cecece;
+
+                        i {
+                            padding-right: 10px;
+                            font-size    : 18px;
+                        }
+
+                        &.submenu-active {
+                            color: var(--vrna-primary);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                ul.sub-menu {
+                    display: block !important;
+                    height : auto !important;
+                    z-index: 999;
+                }
+            }
+        }
+    }
+
+    .bottom-menu {
+        .divider {
+            hr {
+                margin          : 0 10px;
+                background-color: white;
+            }
+        }
+
+        .dropdown-menu {
+            .dropdown-item {
+                i.material-icons {
+                    font-size     : 18px;
+                    vertical-align: bottom;
+                }
+
+                .dropdown-label {
+                    font-size   : 14px;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+.theme-toggler{
+    background:yellow;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    height: 1.6rem;
+    width: 4.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.theme-toggler i{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.theme-toggler i.active{
+    background:black;
+    color: white;
+    border-radius: 50%;
+    
+}
+.dark-theme-variables{
+    --color-background:#181a1e;
+    --color-white:#202528;
+    --color-dark:#edeffd;
+    --color-dark-variant:#a3bdcc;
+    --color-light:rgba(0,0,0,0.4);
+    --box-shadow:0 2rem 3rem var(--color-light);
+}
+
+

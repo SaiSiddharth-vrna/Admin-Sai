@@ -1,0 +1,89 @@
+::ng-deep .movie-active-table {
+    .status-color-column {
+        position     : absolute;
+        height       : 80%;
+        width        : 5px;
+        left         : 1px;
+        border-radius: 3px;
+
+        &.published {
+            background-color: #b7ff65;
+        }
+
+        &.planned {
+            background-color: orange;
+        }
+
+        &.unplanned {
+            background-color: red;
+        }
+    }
+
+    .banner-column {
+        min-width: 170px;
+        max-width: 170px;
+    }
+
+    .id-column {
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    .name-column {
+        min-width: 175px;
+    }
+
+    .year-column {
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    .language-column {
+        min-width: 120px;
+        max-width: 120px;
+    }
+
+    .country-column {
+        min-width: 120px;
+        max-width: 120px;
+    }
+
+    .cost-column {
+        min-width: 120px;
+        max-width: 120px;
+    }
+
+    .rating-column {
+        min-width: 175px;
+        max-width: 175px;
+    }
+
+    .date-column {
+        min-width: 120px;
+        max-width: 125px;
+    }
+
+    .isbanner-column {
+        min-width: 100px;
+        max-width: 110px;
+    }
+
+    .featured-column {
+        min-width: 100px;
+        max-width: 110px;
+    }
+
+    .trending-column {
+        min-width: 100px;
+        max-width: 110px;
+    }
+
+    .status-column {
+        min-width: 125px;
+        max-width: 125px;
+
+        .p-tag {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<img
+  class="rounded-3 shadow"
+  [src]="src"
+  [alt]="alt"
+  [style.width]="width"
+  [style.height]="height"
+  (load)="onLoad()"
+  (error)="onErrorLoad()"
+  [ngClass]="{ imgLoading: isLoading }"
+/>
+<p-skeleton [width]="width" [height]="loaderHeight" *ngIf="isLoading"></p-skeleton>

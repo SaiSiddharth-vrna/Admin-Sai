@@ -1,0 +1,28 @@
+<p-fileUpload class="file" name="myfile[]" accept="image/*" [customUpload]="true" [auto]="true" (uploadHandler)="upload($event)">
+</p-fileUpload>
+
+<p-dialog header="Banner upload" [(visible)]="bannerUploadModal" [style]="{width: '85vw'}">
+    <div class="row bg-white">
+        <div class="col-8">
+            <div class="d-flex flex-column">
+                <div class="cropper-image mx-auto w-100">
+                    <img class="w-100" #image [src]="imgUrl" (load)="imageLoaded()" />
+                </div>
+                <div class="p-1 mx-auto">
+                    <div class="d-flex">
+                        <button class="btn btn-primary" (click)="rotateLeft()"> Rotate Left</button>
+                        <button class="btn btn-primary" (click)="rotateRight()"> Rotate Left</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="d-flex flex-column">
+                <label class="text-center text-info">Preview</label>
+                <img class="m-2 img-preview mx-auto" [src]="cropperImg">
+                <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+<p-toast></p-toast>

@@ -1,0 +1,142 @@
+<div  class="shadow rounded-3">
+    <p-table   #movieApproveGrid [value]="dataSource" dataKey="movieId" responsiveLayout="scroll"
+        class="movie-approve-table"  styleClass="p-datatable-white" [scrollable]="true"
+        scrollHeight="calc(100vh - 210px)" [paginator]="true" [rows]="10" [loading]="loading" width='100%'
+        emptyMessage='No movies found.' [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['movieId','moviename','country','language','date','videos']">
+        
+        <ng-template   pTemplate="caption">
+            <div  class="d-flex">
+                <h6 class="my-auto">Movies Submitted for Approval</h6>
+                <div class="ms-auto my-auto me-2 sk">
+                    <span  class="p-input-icon-left ">
+                        <i class="pi pi-search bg-white text-dark"></i>
+                        <input class="bg-white text-dark" pInputText type="text"  (keyup)="onGlobalFilter($event)"  placeholder="Global Search" />
+                    </span>
+                    <p-button class="ms-2 my-auto" label="Add Movie" (onClick)="onAddMovie()">
+                    </p-button>
+                    <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-outlined ms-2 text-white"
+                        (click)="getDataSource()"></button>
+                </div>
+            </div> 
+        </ng-template>
+
+        
+        <ng-template  pTemplate="header">
+           <tr> 
+             <th class="poster-column">Posters</th>
+                <th class="name-column" pSortableColumn="moviename">
+                    <div class="p-d-flex p-jc-between p-ai-center ">
+                        Name<p-sortIcon field="moviename"></p-sortIcon>
+                    </div>
+                </th>
+                <th class="year-column" pSortableColumn="movieyear">
+                    <div class="p-d-flex p-jc-between p-ai-center"> 
+                        Year<p-sortIcon field="movieyear"></p-sortIcon>
+                    </div>
+                </th>
+                <th class="language-column" pSortableColumn="language">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Language<p-sortIcon field="language"></p-sortIcon>
+                    </div>
+                </th>
+                <th class="country-column  " pSortableColumn="country">
+                    <div class="p-d-flex p-jc-between p-ai-center ">
+                        Country<p-sortIcon field="country"></p-sortIcon>
+                    </div>
+                </th>
+                <th pSortableColumn="ppmCost">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Cost<p-sortIcon field="ppmCost"></p-sortIcon>
+                    </div>
+                </th>
+                <th class="date-column" pSortableColumn="date">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Date<p-sortIcon field="date"></p-sortIcon>
+                    </div>
+                </th>
+                <th  class="action-column" pSortableColumn="videos">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Actions
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        
+        <ng-template pTemplate="body" let-item let-expanded="expanded">
+            <tr class="bg-white text-dark">
+                <td class="poster-column">
+                    <app-image [type]="'poster'" [src]="item.posterurl" [alt]="item.moviename" [width]="'40px'"
+                        [height]="'100%'" [loaderHeight]="'100%'"></app-image>
+                    <button class="ms-2" type="button" pButton pRipple [pRowToggler]="item"
+                        class="p-button-text p-button-rounded p-button-plain text-dark"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td class="name-column"> {{ item.moviename }}</td>
+                <td class="year-column">{{ item.movieyear }}</td>
+                <td class="language-column">{{ item.language }}</td>
+                <td class="country-column">{{ item.country }}</td>
+                <td>{{ item.ppmCost }}</td>
+                <td class="date-column">{{ item.date | date}}</td>
+                <td class="action-column">{{item.videos }}
+                    <span class="d-flex">
+                        <a class="btn btn-primary my-auto me-2 " (click)="play()"  pTooltip="Play Movie" tooltipStyleClass="warning"><i
+                                class="bi bi-play"></i></a>
+                            <div class="video-container">
+                             <span class="close">&#10006;</span>
+                                 <video  controls preload="auto"
+                                    poster='assets/img/prince.jpg'>
+                                    <source src="assets/videos/prince.mp4" type='video/mp4' />
+                                  </video>
+                            </div>
+                            <button class="btn btn-info me-2" type="button" (click)="confirmApproval(item)"><i
+                                class="bi bi-check"></i>
+                            Approve</button>
+                        <button class="btn btn-success" type="button" pTooltip="Reject Movie" tooltipStyleClass="danger"
+                            (click)="confirmRejection(item)"><i class="bi bi-x"></i></button>
+                    </span>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No customers found.</td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="rowexpansion" let-item>
+            <app-movie-details-template [movie]="item"></app-movie-details-template>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-dialog header="Confirmation" [(visible)]="rejectionModal">
+    <div class="row gy-3">
+        <div class="col-12">
+            <i class="bi bi-exclamation-triangle-fill me-2 text-warning"></i> Are you sure that you want to reject
+            <span class="text-info">{{selectedMovie?.moviename | uppercase}}</span> ?
+        </div>
+        <div class="col-12">
+            <span class="p-field">
+                <label class="reason-label" for="reason">Reason for Rejection*</label>
+                <textarea #comment id="reason" class="w-100 text-white" [formControl]="rejectionComment" [rows]="4"
+                    autoResize="true" pInputTextarea></textarea>
+                <small>{{rejectionComment.value.length}}/20</small>
+            </span>
+        </div>
+        <div class="col-12 text-end">
+            <button class="btn btn-danger me-2" (click)="rejectionModal = false"><i class="bi bi-x me-2"></i>
+                No</button>
+            <button class="btn btn-success" (click)=" onRejection()" [disabled]="rejectionComment.invalid"><i
+                    class="bi bi-check-lg me-2"></i>Yes</button>
+        </div>
+    </div>
+</p-dialog>
+
+
+
+

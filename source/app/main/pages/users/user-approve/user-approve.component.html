@@ -1,0 +1,117 @@
+<p-table #userApproveGrid [value]="dataSource" responsiveLayout="scroll" class="user-approve-table "
+    styleClass="p-datatable-striped" [scrollable]="true" scrollHeight="calc(100vh - 210px)" [paginator]="true"
+    [rows]="10" [loading]="loading" width='100%' emptyMessage='No movies found.' [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10, 25, 50]"
+    [globalFilterFields]="['email','mobile']">
+    <ng-template pTemplate="caption" >
+        <div class="d-flex bg-white text-dark">
+            <h6 class="my-auto">Users Submitted for Approval</h6>
+            <div class="ms-auto my-auto me-2">
+                <span class="p-input-icon-left me-2">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (keyup)="onGlobalFilter($event)" placeholder="Global Search" />
+                </span>
+                <app-user-add (userAdded)="getDataSource()"></app-user-add>
+                <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-outlined ms-2"
+                    (click)="getDataSource()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" >
+        <tr >
+            <th class="email-column " pSortableColumn="email" >
+                Email<p-sortIcon field="email"></p-sortIcon>
+            </th>
+            <th class="name-column" pSortableColumn="firstName">
+                First Name<p-sortIcon field="firstName"></p-sortIcon>
+            </th>
+            <th class="name-column" pSortableColumn="lastName">
+                Last Name<p-sortIcon field="lastName"></p-sortIcon>
+            </th>
+            <th class="mobile-column" pSortableColumn="mobile">
+                Mobile<p-sortIcon field="mobile"></p-sortIcon>
+            </th>
+            <th class="date-column" pSortableColumn="date">
+                Date<p-sortIcon field="date"></p-sortIcon>
+            </th>
+            <th class="type-column" pSortableColumn="admin">
+                Type<p-sortIcon field="admin"></p-sortIcon>
+            </th>
+            <th class="customer-column" pSortableColumn="customer">
+                <div class="d-flex mx-auto">
+                    Customer<p-sortIcon field="customer"></p-sortIcon>
+                </div>
+            </th>
+            <th class="action-column">Actions</th>
+            <th class="password-column">Password</th>
+        </tr>
+        
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user>
+        <tr class = "bg-white text-dark" >
+            <td>{{user.email}}</td>
+            <td class="name-column">{{user.firstName}}</td>
+            <td class="name-column">{{user.lastName}}</td>
+            <td class="mobile-column">{{user.mobile}}</td>
+            <td class="date-column">{{user.date | date}}</td>
+            <td class="type-column">
+                <p-tag class="w-100" value="Admin" severity="primary" *ngIf="user.admin"></p-tag>
+                <p-tag class="w-100" value="Partner" severity="info" *ngIf="user.agent"></p-tag>
+            </td>
+            <td class="customer-column">
+                <div class="d-flex mx-auto">
+                    <i class="pi" [ngClass]="{'pi-check-square text-warning fs-5': user.customer,
+                    'pi-stop text-muted': !user.customer}"></i>
+                </div>
+            </td>
+            <td class="action-column">
+                <span class="d-flex">
+                    <button class="btn btn-success me-2" type="button" (click)="confirmApproval(user)">
+                        <i class="bi bi-check"></i>
+                        Approve</button>
+                    <button class="btn btn-danger" type="button" (click)="confirmRejection(user)">
+                        <i class="bi bi-x"></i> Reject</button>
+                </span>
+            </td>
+            <td class="password-column">
+             {{user.password}}
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="4">No users found for approval, Please click <a class="link-warning px-2" role="button"
+                    (click)="addUser()"> Add User</a> to add new user.</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-dialog header="Confirmation" [(visible)]="rejectionModal">
+    <div class="row gy-3">
+        <div class="col-12">
+            <i class="bi bi-exclamation-triangle-fill me-2 text-warning"></i> Are you sure that you want to reject
+            <span class="text-info">{{selectedUser?.moviename | uppercase}}</span> ?
+        </div>
+        <div class="col-12">
+            <span class="p-field">
+                <label class="reason-label" for="reason">Reason for Rejection*</label>
+                <textarea #comment id="reason" class="w-100 text-white" [formControl]="rejectionComment" [rows]="4"
+                    autoResize="true" pInputTextarea></textarea>
+                <small>{{rejectionComment.value.length}}/100</small>
+            </span>
+        </div>
+        <div class="col-12 text-end">
+            <button class="btn btn-danger me-2" (click)="rejectionModal = false"><i class="bi bi-x me-2"></i>
+                No</button>
+            <button class="btn btn-success" (click)=" onRejection()" ><i
+                    class="bi bi-check-lg me-2"></i>Yes</button>
+        </div>
+    </div>
+</p-dialog>
+
+<!--[disabled]="rejectionComment.invalid"  above -->

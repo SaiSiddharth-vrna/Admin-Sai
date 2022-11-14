@@ -1,0 +1,91 @@
+<p-button label="Add User" (onClick)="showDialog()"></p-button>
+
+<p-dialog header="Add New User" [(visible)]="showAddUser" [style]="{maxWidth: '775px'}">
+    <form [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-12">
+                <small [ngClass]="{'text-danger': emailError}">Email</small>
+                <input class="w-100" type="email" pInputText placeholder="example@vrnaplex.com" formControlName="email" />
+                    
+                <small class="text-danger" [ngClass]="{'invisible': !emailError}">Please
+                    enter valid email!</small>
+                
+            </div>
+            <br>
+            <div class="p-inputgroup mb-2">
+                
+                <input [type]="hide ? 'password' : 'text'" pInputText placeholder="Password" formControlName="password">
+                <span class="p-inputgroup-addon" (click)="hide= !hide">
+                    <i class="pi" [ngClass]="{'pi-eye': hide, 'pi-eye-slash': !hide}"></i>
+                </span> 
+            </div>
+            <!--<div class="col-12">
+                <small [ngClass]="{'text-danger':passwordError}">Password</small>
+                <input class="w-100" id="password" type = "password"pInputText placeholder="Please enter your password"
+                    formControlName="password" />
+                    <span class="p-inputgroup-addon" (click)="hide= !hide">
+                        <i class="pi" [ngClass]="{'pi-eye': hide, 'pi-eye-slash': !hide}"></i>
+                    </span>
+                <small class="text-danger" [ngClass]="{'invisible': !passwordError}">Please
+                    enter valid Password!</small>-
+                    
+            </div>-->
+            
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex flex-column">
+                <small [ngClass]="{'text-danger': mobileError}">Mobile</small>
+                <p-inputNumber class="w-100" [useGrouping]="false" formControlName="mobile" placeholder="enter your mobile no.">
+                </p-inputNumber>
+                <small class="text-danger" [ngClass]="{'invisible': !mobileError}">Please
+                    enter 10 digit</small>
+            </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="position-relative">
+                    <small>Nationality</small>
+                    <p-dropdown class="w-100 mb-4" [options]="countries" optionLabel="country_name"
+                        optionValue="countryCode" placeholder="Select a Country"  formControlName="nationality" [filter]="true" [showClear]="true"
+                        [virtualScroll]="true" [itemSize]="30">
+                    </p-dropdown>
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <small>First Name</small>
+                <input class="w-100 mb-4" type="text" pInputText placeholder="first name" formControlName="firstName" />
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <small>Last Name</small>
+                <input class="w-100 mb-4" type="text" pInputText placeholder="last name" formControlName="lastName" />
+            </div>
+            <div class="col-12">
+                <small>Choose a Role</small>
+                <div class="d-flex mb-2">
+                    <div class="p-field-radiobutton me-4">
+                        <p-radioButton name="admin" [value]=true inputId="role" formControlName="admin"></p-radioButton>
+                        <label class="ps-2" for="role">Admintrator</label>
+                    </div>
+                    <div class="p-field-radiobutton ms-2">
+                        <p-radioButton name="admin" [value]=false inputId="agent" formControlName="admin">
+                        </p-radioButton>
+                        <label class="ps-2" for="agent">Partner</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="p-field-checkbox mt-4">
+                    <p-checkbox [binary]="true" inputId="binary" formControlName="customer"></p-checkbox>
+                    <label class="ps-2" for="binary"> Would you want this user to be customer ?</label>
+                </div>
+            </div>
+            <div class="col-12 mt-3 text-end">
+                <button pButton class="me-2 p-button-danger" type="button" label="Reset" icon="pi pi-times"
+                    (click)="newUserForm.reset()"></button>
+                <button pButton class="me-2 p-button-info" type="button" label="Cancel" icon="pi pi-times"
+                    (click)="showAddUser = !showAddUser"></button>
+                <button pButton type="submit" class="p-button-primary" [label]="loading? 'Loading':'Add User'"
+                    [icon]="loading? 'pi pi-spin pi-spinner':'pi pi-check'" [disabled]="f['email'].invalid || loading">
+                </button>
+            </div>
+        </div>
+    </form>
+</p-dialog>

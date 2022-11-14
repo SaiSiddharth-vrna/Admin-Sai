@@ -1,0 +1,18 @@
+.DetailsTable {
+    font-size: 14px;
+
+    th,
+    td {
+        padding-top: 10px;
+    }
+
+    th {
+        width: 150px;
+    }
+
+    .details {
+        span:not(:empty):not(:last-child):after {
+            content: ", ";
+        }
+    }
+}

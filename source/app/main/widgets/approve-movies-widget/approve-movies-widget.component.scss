@@ -1,0 +1,48 @@
+a.view-btn {
+    padding         : 4px 5px 3px 5px;
+    background-color: transparent;
+    border          : 1px solid #525252;
+    text-decoration : none;
+    color           : #bfbfbf;
+    font-size       : 12px;
+    border-radius   : 5px;
+
+    i {
+        vertical-align: middle;
+    }
+
+    &:hover {
+        border-color: #fff;
+        color       : #e4e4e4;
+    }
+}
+
+table.approve-table {
+    font-size: 14px;
+
+    thead.tabel-header {
+        background: #1a1d20;
+
+        th {
+            font-weight: normal;
+        }
+    }
+
+    tbody {
+        font-weight: normal;
+
+        .table-poster {
+            width: 45px;
+
+            .poster {
+                height: 65px;
+            }
+
+        }
+
+        .action-column {
+            width: 175px;
+        }
+    }
+
+}

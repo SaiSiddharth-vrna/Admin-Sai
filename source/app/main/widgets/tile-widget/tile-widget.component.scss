@@ -1,0 +1,39 @@
+.card {
+    .card-body {
+        .right-icon {
+            width        : 45px;
+            border-radius: 50%;
+            height       : 45px;
+            display      : flex;
+           
+
+            i {
+                margin: auto;
+            }
+
+            &.bg-1 {
+                background: linear-gradient(to bottom right, #9e88f5 0%, #6259ca 100%) !important;
+            }
+
+            &.bg-2 {
+                background: linear-gradient(to bottom right, #f1bf64 0%, #f71d36 100%) !important
+            }
+
+            &.bg-3 {
+                background: linear-gradient(to bottom right, #4be8d4 0%, #129bd2 100%) !important;
+            }
+
+            &.bg-4 {
+                background: linear-gradient(to bottom right, #9070ff 0%, #ff5d9e 100%) !important
+            }
+        }
+    }
+}
+.card:hover{
+    transform: scale(1.1);
+   
+    color: white;
+}
+.card-body:hover{
+    color: white;
+}

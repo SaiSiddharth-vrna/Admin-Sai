@@ -1,0 +1,6 @@
+<p-fileUpload  name="myfile[]" [customUpload]="true" (uploadHandler)="myUploader($event)"></p-fileUpload> 
+<div   *ngIf="src">
+    <h1>Cropper Result</h1>
+    <img *ngIf="src" [src]="src"><br>
+  </div>
+<app-image-upload-crop   (cropped)="showCroppResult($event)"></app-image-upload-crop>

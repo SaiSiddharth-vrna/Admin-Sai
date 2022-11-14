@@ -1,0 +1,71 @@
+<p-table #userRejectedGrid [value]="dataSource" dataKey="userId" editMode="row" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+        <div class="d-flex bg-white text-dark">
+            <h6 class="my-auto">Users Rejected</h6>
+            <div class="ms-auto my-auto me-2">
+                <span class="p-input-icon-left me-2">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (keyup)="onGlobalFilter($event)" placeholder="Global Search" />
+                </span>
+                <app-user-add></app-user-add>
+                <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-outlined ms-2"
+                    (click)="getDataSource()"></button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr >
+            <th class="email-column" pSortableColumn="email">
+                Email<p-sortIcon field="email"></p-sortIcon>
+            </th>
+            <th class="mobile-column" pSortableColumn="mobile">
+                Mobile<p-sortIcon field="mobile"></p-sortIcon>
+            </th>
+            <th class="date-column" pSortableColumn="date">
+                Date<p-sortIcon field="date"></p-sortIcon>
+            </th>
+            <th class="role-column  ">
+                Role
+            </th>
+            <th style="width:8rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="user" class="bg-white text-dark">
+            <td class="email-column">
+                {{user.email}}
+            </td>
+            <td class="mobile-column">
+                {{user.mobile}}
+            </td>
+            <td class="date-column">{{user.date | date}}</td>
+            <td class="role-column">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <p-dropdown class="w-75" [(ngModel)]="user.roleId" [options]="roles" optionLabel="roleName"
+                            optionValue="roleId">
+                        </p-dropdown>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{user.roleId}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td class="text-center">
+                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                    (click)="onRowEditInit(user)" class="p-button-rounded p-button-text"></button>
+                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                    (click)="onRowEditSave(user)"
+                    class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                    (click)="onRowEditCancel(user, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="4">No Rejected User, Please click <a class="link-warning px-2" role="button"
+                    (click)="addUser()"> Add User</a> to add new user.</td>
+        </tr>
+    </ng-template>
+</p-table>

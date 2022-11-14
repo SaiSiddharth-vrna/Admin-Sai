@@ -1,0 +1,113 @@
+<div class="shadow rounded-3">
+    <p-table  #movieActiveGrid [value]="dataSource" dataKey="movieId" responsiveLayout="scroll"
+        class="movie-active-table" styleClass="p-datatable-striped" [scrollable]="true"
+        scrollHeight="calc(100vh - 205px)" [paginator]="true" [rows]="10" [loading]="loading"
+        emptyMessage='No movies found.' [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['movieId','moviename','country','language']">
+        <ng-template pTemplate="caption">
+            <div class="d-flex">
+                <h6 class="my-auto"> Active Movies Submitted for Approval</h6>
+                <div class="ms-auto my-auto me-2">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search bg-white text-dark"></i>
+                        <input class="bg-white" pInputText type="text" (keyup)="onGlobalFilter($event)" placeholder="Global Search" />
+                    </span>
+                    <p-button class="ms-2 my-auto" label="Add Movie" styleClass="p-button" (onClick)="onAddMovie()">
+                    </p-button>
+                    <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-outlined ms-2 text-white"
+                        (click)="getDataSource()"></button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="banner-column"></th>
+                <th class="name-column" pSortableColumn="moviename">
+                    Name<p-sortIcon field="moviename"></p-sortIcon>
+                </th>
+                <th class="year-column" pSortableColumn="movieyear">
+                    Year<p-sortIcon field="movieyear"></p-sortIcon>
+                </th>
+                <th class="language-column" pSortableColumn="language">
+                    Language<p-sortIcon field="language"></p-sortIcon>
+                </th>
+                <th class="country-column" pSortableColumn="country">
+                    Country<p-sortIcon field="country"></p-sortIcon>
+                </th>
+                <th class="cost-column" pSortableColumn="ppmCost">
+                    Cost<p-sortIcon field="ppmCost"></p-sortIcon>
+                </th>
+                <th class="rating-column" pSortableColumn="userRating">
+                    Rating<p-sortIcon field="userRating"></p-sortIcon>
+                </th>
+                <th class="date-column" pSortableColumn="date">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Date<p-sortIcon field="date"></p-sortIcon>
+                    </div>
+                </th>
+                <th class="isbanner-column" pSortableColumn="isBanner">
+                    Banner<p-sortIcon field="isBanner"></p-sortIcon>
+                </th>
+                <th class="featured-column" pSortableColumn="isFeatured">
+                    Featured<p-sortIcon field="isFeatured"></p-sortIcon>
+                </th>
+                <th class="trending-column" pSortableColumn="isTrending">
+                    Trending<p-sortIcon field="isTrending"></p-sortIcon>
+                </th>
+                <th class="status-column">
+                    Status
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template  pTemplate="body" let-item let-expanded="expanded">
+            <tr class="bg-white text-dark">
+                <td class="banner-column position-relative ">
+                    <div class="status-color-column" [ngClass]="{'published': item.releaseStatus === 'Published',
+                    'planned': item.releaseStatus === 'Release Planned',
+                    'unplanned': item.releaseStatus === 'Not Published'}"></div>
+
+                    <app-image class="w-100" [src]="item.moviebannerurl" [alt]="item.moviename" [width]="'100%'"
+                        [height]="'100%'" [loaderHeight]="'2rem'"></app-image>
+
+                    <button type="button" pButton pRipple [pRowToggler]="item"
+                        class="ms-2 p-button-text p-button-rounded p-button-plain text-dark"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td class="name-column">{{ item.moviename }}</td>
+                <td class="year-column">{{ item.movieyear }}</td>
+                <td class="language-column">{{ item.language }}</td>
+                <td class="country-column">{{ item.country }}</td>
+                <td class="cost-column">{{ item.ppmCost }}</td>
+                <td class="rating-column">
+                    <p-rating [(ngModel)]="item.userRating" [cancel]="false"></p-rating>
+                </td>
+                <td class="date-column">{{ item.date | date}}</td>
+                <td class="isbanner-column text-center">
+                    <p-inputSwitch [(ngModel)]="item.isBanner" (onChange)="onCategoryToggle('banner',item.movieId)">
+                    </p-inputSwitch>
+                </td>
+                <td class="featured-column">
+                    <p-inputSwitch [(ngModel)]="item.isFeatured" (onChange)="onCategoryToggle('featured',item.movieId)">
+                    </p-inputSwitch>
+                </td>
+                <td class="trending-column">
+                    <p-inputSwitch [(ngModel)]="item.isTrending" (onChange)="onCategoryToggle('trending',item.movieId)">
+                    </p-inputSwitch>
+                </td>
+                <td class="status-column">
+                    <p-tag class="w-100" severity="info" [value]="item.releaseStatus"
+                        *ngIf="item.releaseStatus === 'Published'"></p-tag>
+                    <p-tag class="w-100" severity="info" [value]="item.releaseStatus"
+                        *ngIf="item.releaseStatus === 'Release Planned'"></p-tag>
+                    <p-tag class="w-100" severity="warining" [value]="item.releaseStatus"
+                        *ngIf="item.releaseStatus === 'Not Published'"></p-tag>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="rowexpansion" let-item>
+            <app-movie-details-template [movie]="item"></app-movie-details-template>
+        </ng-template>
+    </p-table>
+</div>

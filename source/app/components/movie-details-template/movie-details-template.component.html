@@ -1,0 +1,72 @@
+<div  class="d-flex">
+    <div class="p-1">
+        <app-image [type]="'poster'" [src]="movie.posterurl" [alt]="movie.moviename" [width]="'150px'" [height]="'100%'"
+            [loaderHeight]="'100%'"></app-image>
+    </div>
+    <div class="p-1">
+        <table class='DetailsTable text-dark'>
+            <tbody>
+                <tr>
+                    <th>Director</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let director of movie.director">
+                            {{director}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Producers</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let producer of movie.producer">
+                            {{producer}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Stars</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let cast of movie.cast">
+                            {{cast}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Musician</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let musicdirector of movie.musicdirector">
+                            {{musicdirector}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Audio Language</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let audiolanguages of movie.audiolanguages">
+                            {{audiolanguages}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Released By</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let releasedby of movie.releasedby">
+                            {{releasedby}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Subtitles</th>
+                    <td class='details'>
+                        <span class='p-ml-0' *ngFor="let subtitles of movie.subtitles">
+                            {{subtitles}}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="p-1 ms-auto">
+        <app-image [type]="'banner'" [src]="movie.moviebannerurl" [alt]="movie.moviename" [width]="'650px'"
+            [height]="'100%'" [loaderHeight]="'100%'"></app-image>
+    </div>
+</div>

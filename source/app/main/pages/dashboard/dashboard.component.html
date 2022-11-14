@@ -1,0 +1,85 @@
+<div class="dashboard-main h-100 px-4">
+    <div class="row gy-4 py-4">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+            <app-tile-widget></app-tile-widget>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 ">
+            <div class="card  text-dark shadow border-0">
+                <div class="card-body p-4 bg-success">
+                    <div class="row">
+                        <div class="col">
+                            <span class="h6 font-semibold  text-sm d-block mb-2">Approved</span>
+                            <span class="h3 font-bold mb-0">33</span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="right-icon bg-2">
+                                <i class="bi bi-credit-card"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 mb-0 text-sm">
+                        <span class="badge badge-pill bg-soft-success text-info me-2"> 
+                            <i class="bi bi-plus me-1 "></i>1
+                        </span>
+                        <span class="text-nowrap text-xs ">Approved since last month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 ">
+            <div class="card  text-dark shadow border-0 ">
+                <div class="card-body p-4 bg-warning">
+                    <div class="row">
+                        <div class="col">
+                            <span class="h6 font-semibold text-sm d-block mb-2">Active</span>
+                            <span class="h3 font-bold mb-0">32</span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="right-icon bg-3">
+                                <i class="bi bi-credit-card"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 mb-0 text-sm">
+                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                            <i class="bi bi-bookmark-check me-1"></i>1
+                        </span>
+                        <span class="text-nowrap text-xs ">Active since last month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 ">
+            <div class="card  text-dark shadow border-0 ">
+                <div class="card-body p-4 bg-danger">
+                    <div class="row">
+                        <div class="col">
+                            <span class="h6 font-semibold  text-sm d-block mb-2">Rejected</span>
+                            <span class="h3 font-bold mb-0">2</span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="right-icon bg-4">
+                                <i class="bi bi-credit-card"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 mb-0 text-sm">
+                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                            <i class="bi bi-slash-circle me-1"></i>0
+                        </span>
+                        <span class="text-nowrap text-xs ">Since last month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row gy-4">
+        <div class="col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+            <app-approve-movies-widget></app-approve-movies-widget>
+        </div>
+        <div class="col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+            <app-revenue-chart-widget></app-revenue-chart-widget>
+        </div>
+    </div>
+</div>

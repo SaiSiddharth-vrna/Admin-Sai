@@ -1,0 +1,53 @@
+<!-- 
+
+
+
+   
+
+<p-dialog header="Long Content" [(visible)]="videoUploadModal" [style]="{width: '50vw'}">
+
+    <button>video cut</button>
+     <div class="modal" id="modal">
+        <div class="modal-header">
+             <div class="title">video upload</div>
+             <button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <video [src]="videoUploadModal"></video>
+        </div>
+     </div>
+     <div id="overplay"></div>
+
+
+
+</p-dialog>
+<p-toast></p-toast> -->
+
+<a class="btn btn-primary  my-3  btn"   (click)="play()" pTooltip="Play trailer" tooltipStyleClass ="danger " ><i
+    class="bi bi-play"></i></a>
+    
+    <div (visible)="videoUploadModal"   class="video-container">
+     <span class="close">&#10006;</span>
+         <video   controls preload="auto">
+            <source class="w-100"   #video [src]="videoUrl" type='video/mp4'/>
+         </video>
+         
+    </div>
+
+<p-fileUpload class="file" name="myfile[]"  accept="video/*"  [customUpload]="true" [auto]="true"  chooseLabel="upload Movie" (uploadHandler)="upload($event)">
+</p-fileUpload>
+
+<!-- 
+
+         <input type="file" (change)="readVideoUrl($event)">
+
+        <p *ngIf="videoSizeError">Too big</p>
+        <video #video style="display: none;" *ngIf="videoUrl" width="320" height="240" controls [attr.src]="videoUrl" (loadedmetadata)="getDuration($event)">
+        </video>
+     -->
+
+<!--
+    
+    <video controls="controls" preload="metadata" autoplay="auto" id="video-player"  webkit-playsinline="webkit-playsinline" class="videoPlayer" style="width: 100%; margin-bottom: 10px;" *ngIf="videourl">
+        <source id="VideoReload" [src]="videosrc" type="video/mp4" />
+      </video> -->

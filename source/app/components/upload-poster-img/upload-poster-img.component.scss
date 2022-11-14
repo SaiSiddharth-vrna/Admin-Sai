@@ -1,0 +1,27 @@
+.preview {
+    img {
+        max-width: 350px;
+    }
+}
+
+.cropper-image {
+    height   : 600px;
+    max-width: 100%;
+
+    &Container {
+        display         : flex;
+        align-items     : center;
+        flex-direction  : column;
+        padding-top     : 32px;
+        //background-color: #f7f7fa;
+        
+
+        
+    }
+}
+
+.img-preview {
+    width     : 275px;
+    max-width : 100%;
+    background: white;
+}

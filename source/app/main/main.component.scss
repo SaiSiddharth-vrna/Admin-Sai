@@ -1,0 +1,12 @@
+.main-container {
+    display         : flex;
+   // background-color: var(--surface-b);
+    background-color: white;
+
+    .main-content {
+        width   : 100%;
+        overflow: hidden;
+        height  : 100vh;
+        position: relative;
+    }
+}

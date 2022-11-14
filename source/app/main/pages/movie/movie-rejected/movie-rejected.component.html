@@ -1,0 +1,89 @@
+<p-table  [value]="dataSource" dataKey="movieId" responsiveLayout="scroll" styleClass="p-datatable-striped;"
+    [scrollable]="true" scrollHeight="calc(100vh - 125px)" [paginator]="true" [rows]="10" [loading]="loading"
+    width='100%' emptyMessage='No movies found.' [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10, 25, 50]"
+    [globalFilterFields]="['movieId','moviename','country','language', 'director','ppmCost','sk']" class="bg-light">
+   <!--- <ng-template pTemplate="caption">
+        <div class="d-flex bg-white text-dark">
+            <h6 class="my-auto"> Reject Movies Submitted</h6>
+            <div class="ms-auto my-auto me-2">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (keyup)="onGlobalFilter($event)" placeholder="Global Search" />
+                </span>
+               <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-outlined ms-2"
+                    (click)="getDataSource()"></button>
+            </div>
+        </div>
+    </ng-template>-->
+    <ng-template   pTemplate="header" >
+        <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="movieId">
+                ID<p-sortIcon field="movieId"></p-sortIcon>
+            </th>
+            <th>Banner</th>
+            <th pSortableColumn="moviename">
+                Name<p-sortIcon field="moviename"></p-sortIcon>
+            </th>
+            <th pSortableColumn="movieyear">
+                Year<p-sortIcon field="movieyear"></p-sortIcon>
+            </th>
+            <th pSortableColumn="language">
+                Language<p-sortIcon field="language"></p-sortIcon>
+            </th>
+            <th pSortableColumn="country">
+                Country<p-sortIcon field="country"></p-sortIcon>
+            </th>
+            <th pSortableColumn="ppmCost">
+                Cost<p-sortIcon field="ppmCost"></p-sortIcon>
+            </th>
+
+            <th class="action-column"  pSortableColumn="sk">
+                <div class="p-d-flex p-jc-between p-ai-center" field="sk">
+                    Actions
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-item let-expanded="expanded">
+        
+        <tr class="bg-white text-dark">
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="item"
+                    class="p-button-text p-button-rounded p-button-plain text-dark"
+                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+        
+            <td>{{ item.movieId }}</td>
+            <td>
+                <img [src]="item.moviebannerurl" [alt]="item.moviename" width="100%" class="p-shadow-4" />
+            </td>
+            <td>{{ item.moviename }}</td>
+            <td>{{ item.movieyear }}</td>
+            <td>{{ item.language }}</td>
+            <td>{{ item.country }}</td>
+            <td>{{ item.ppmCost }}</td>
+            
+            <td class="action-column">{{item.sk}}
+                
+                <span class="d-flex">
+                   <button class="btn btn-info me-2  " type="button" (click)="  confirmApproval(item)"><i
+                            class="bi bi-check"></i>
+                        Edit</button>
+                    <button class="btn btn-danger" type="button" pTooltip="Reject Movie" tooltipStyleClass="danger"
+                    ><i class="bi bi-x"></i></button>
+                </span>
+                 
+            </td>
+        
+        </tr>
+    </ng-template>
+   
+    <ng-template pTemplate="rowexpansion" let-item>
+        <app-movie-details-template [movie]="item"></app-movie-details-template>
+    </ng-template>
+
+</p-table>
+ <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

@@ -1,0 +1,139 @@
+<p-toast></p-toast>
+<form class="movie-add-form bg-dark" [formGroup]="detailsForm">
+    <div class="row gy-4  align-items-end">
+        <!-- #Title -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label ">
+                <input pInputText class="w-100 " id="float-input" type="text" formControlName="moviename">
+                <label   for="float-input">Title</label>
+            </span>
+        </div>
+
+        <!-- #Year -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label ">
+                <p-dropdown  [options]="years" [filter]="true" [showClear]="true" formControlName="movieyear">
+                </p-dropdown>
+                <label  for="float-input">Year</label>
+            </span>
+        </div>
+
+        <!-- #Certificate -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label">
+                <input pInputText class="w-100" id="float-input" type="text" formControlName="certificate">
+                <label   for="float-input">Certificate</label>
+            </span>
+        </div>
+
+        <!-- #Country -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label">
+                <!-- optionLabel="country_name"     siva input the options next  optionValue="countryCode" -->
+                <p-dropdown class="bg-white text-dark" [options]="countries"  optionLabel="country_name"  [filter]="true"
+                    filterBy="country_name" [showClear]="true" formControlName="country"></p-dropdown>
+                <label  for="float-input">Country</label>
+            </span>
+        </div>
+
+
+        <!-- #Language -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label">
+                <input pInputText class="w-100 " id="float-input" type="text" formControlName="language">
+                <label for="float-input">Language</label>
+            </span>
+        </div>
+
+        <!-- #Countries Access -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label text-dark">
+                <p-multiSelect  [(ngModel)]="selectedCountries1" selectedItemsLabel="{0} items selected"  [options]="countries" optionLabel="country_name" 
+                    [filter]="true" filterBy="country_name" formControlName="countriesAccess">
+                </p-multiSelect>
+                <!--<p-multiSelect [options]="countries" [(ngModel)]="selectedCities1"  selectedItemsLabel="{0} items selected"  optionLabel="country_name"></p-multiSelect>-->
+                
+                <label  for="float-input">Countries Access</label>
+            </span>
+        </div>
+
+        <!-- #Genres -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label">
+                <p-multiSelect [options]="countries" optionLabel="country_name"  [(ngModel)]="selectedCountries1" selectedItemsLabel="{0} items selected"  [filter]="true"
+                    filterBy="country_name" formControlName="genre">
+                </p-multiSelect>
+                <label for="float-input">Genres</label>
+            </span>
+        </div>
+
+        <!-- #Director -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label">
+                <p-chips class="w-100 text-dark" id="float-input" formControlName="director"></p-chips>
+                <label for="float-input">Director</label>
+            </span>
+        </div>
+
+        <!-- #Musician -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <span class="p-float-label">
+                <p-chips class="w-100" id="float-input" formControlName="musicdirector"></p-chips>
+                <label for="float-input">Musician</label>
+            </span>
+        </div>
+
+        <!-- #Producer -->
+        <div class="col-12">
+            <span class="p-float-label">
+                <p-chips class="w-100" id="float-input" formControlName="producer"></p-chips>
+                <label  for="float-input">Producer</label>
+            </span>
+        </div>
+
+        <!-- #Artist -->
+        <div class="col-12">
+            <span class="p-float-label">
+                <p-chips class="w-100" id="float-input" formControlName="artist"></p-chips>
+                <label  for="float-input">Artist</label>
+            </span>
+        </div>
+
+        <!-- #Description -->
+        <div class="col-12">
+            <span class="p-float-label">
+                <textarea pInputTextarea class="w-100 " id="float-input" formControlName="description"></textarea>
+                <label  for="float-input">Description</label>
+            </span>
+            
+        </div>
+           
+        <!-- #Description -->
+        <div class="col-12">
+           <button pButton class="p-button-info      my-3  csk" type="button" label="TMPB"></button>
+                <app-play-videos></app-play-videos>
+                <app-upload-banner-img (bannerLink)="onBannerLink($event)"></app-upload-banner-img>
+
+               
+                <!-- <p-fileUpload class="file" name="myfile[]" accept="videos*" [customUpload]="true"  [auto]="true" chooseLabel="upload Movie"  ></p-fileUpload> -->
+
+                
+            
+         </div>
+    </div>
+   
+    
+    <div class="action-buttons">
+        <div class="d-flex">
+            <button pButton class=" p-button-secondary" type="button" label="Back" icon="pi pi-angle-left" iconPos="left"
+                (click)="onBannerUpload()">
+            </button>
+            <button pButton class="ms-auto me-2 p-button-success" type="button" label="Next" icon="pi pi-angle-right"
+                iconPos="right" (click)="onSubmit()" [disabled]="detailsForm.invalid" (click)="sk()">
+            </button>
+            <button pButton class="ms-auto me-3 p-button-danger" type="button" label="Move" icon="pi pi-angle-right"
+                iconPos="right" (click)="moveToApprove()">
+            </button>
+       </div>
+    </div>
+</form>

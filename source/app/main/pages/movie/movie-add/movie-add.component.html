@@ -1,0 +1,20 @@
+<div class="form-stepper">
+    <p-steps  [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+</div>
+<div  class="p-1">
+    <div id="banner-upload" *ngIf="activeIndex === 0">
+        <app-upload-poster-img  (posterLink)="onPosterLink($event)"></app-upload-poster-img>
+    </div>
+    <div id="movie-details bg-white" *ngIf="activeIndex === 1">
+        <app-movie-add-form [posterUrl]="posterUrl" [bannerUrl]="bannerUrl" (bannerUpload)="bannerUpload()">
+        </app-movie-add-form>
+    </div>
+    <div id="movie-upload" *ngIf="activeIndex === 2">
+        
+        
+
+    </div>
+    <div id="movie-submit" *ngIf="activeIndex === 3">
+
+    </div>
+</div>

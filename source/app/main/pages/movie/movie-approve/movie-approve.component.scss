@@ -1,0 +1,89 @@
+
+
+p-table.movie-approve-table {
+
+    
+    .poster-column {
+        min-width: 125px;
+        max-width: 125px;
+        
+        
+    }
+
+    .name-column {
+        min-width: 150px;
+        
+    }
+
+    .year-column {
+        min-width: 115px;
+        max-width: 115px;
+    }
+
+    .language-column {
+        min-width: 150px;
+        max-width: 150px;
+    }
+
+    .date-column {
+        min-width: 125px;
+        max-width: 125px;
+    }
+
+    .action-column {
+        min-width: 250px;
+        max-width: 250px;
+    }
+
+    @media only screen and (max-width: 1280px) {
+        .country-column {
+            display: none;
+        }
+    }
+}
+
+.reason-label {
+    font-size     : 12px;
+    padding-bottom: 5px;
+}
+
+
+.video-container{
+    position: fixed;
+    top: 0;left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background-color:rgba(0,0,1.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+.video-container .close{
+    position:absolute;
+    top: 15%;
+    right: 13%;
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+.video-container video{
+    height: 500px;
+    
+    max-width: 900px;
+    transform: scale(0);
+    box-shadow:0 20px 20px rgba(0,0,0,0.2);
+    outline: none;
+    transition: all 0.31s;
+}
+.video-container.show{
+    pointer-events: all;
+    opacity: 1;
+}
+.video-container.show video{
+    transform: scale(1);
+}
+
