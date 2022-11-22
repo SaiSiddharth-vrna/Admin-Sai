@@ -1,0 +1,44 @@
+<div class="bg-dark">
+    <br>
+    <p class="text-left text-warning  "style="font-size:20px;">&emsp;User-Profile&nbsp;<i class="pi pi-user-edit " ></i></p>
+    
+<hr class="divider bg-light" style="height:3px;">
+<br>
+<form class="position-relative" style="left:25px;  max-width: 810px; ">
+<div class="form-group">
+    <label class="text-light" >Enter your Email address:</label>
+    <input type="email" class="form-control w-75"  aria-describedby="emailHelp" placeholder="Enter email" [value]="">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div><br>
+  <div class="form-group">
+    <label class="text-light" >Enter your Phone No.:</label>
+    <input type="Phone number" class="form-control w-75"  placeholder="Phone no.">
+   
+  </div><br>
+  <div class="form-group">
+    <label class="text-light" >Enter your full name:</label>
+    <input type="username" class="form-control w-75" placeholder="User's full name" >
+  </div><br>
+  <div class="form-group">
+    <label class="text-light" >Describe about yourself:</label><br>
+    <textarea rows="5" cols="90" style="border-radius:5px; font-style:italic;">description....</textarea>
+    
+  </div><br>
+  
+<button type="submit" class="btn btn-primary bg-gradient">Update</button>
+</form>
+<div class="container" style = " max-width: 450px;height:430px; position:relative;bottom:440px ; left:420px;">
+<label class="text-light">Set your profile picture:</label>&nbsp;
+
+<input id="image" type="file" name="profile_photo" placeholder="Photo" required="" capture="" style="position: relative;left:230px;bottom:-110px;">
+<br><br>
+<div class="container position-relative"style = "background:lightgrey; height:200px;width:200px; right:110px;bottom:30px;border-radius:50%" ><i class="pi pi-user" style="position:relative; left:45%; top:45%;color:green;"></i></div>
+</div>
+<div class="mt-2">
+        
+  <router-outlet></router-outlet>
+
+</div> 
+
+
+
