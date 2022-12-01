@@ -1,0 +1,6 @@
+
+@Library('jenkins-pipeline-shared-vrna')_
+
+stage('Demo') {
+myDeliveryPipeline(scmUrl:"git@github.com:vrnaplex/vrna-admin-ui.git",serviceName:"vrna-admin-ui-service",deployName:"vrna-admin");
+}

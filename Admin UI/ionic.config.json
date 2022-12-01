@@ -1,0 +1,10 @@
+{
+  "defaultProject": "vrna-admin-ui",
+  "projects": {
+    "vrna-admin-ui": {
+      "name": "vrna-admin-ui",
+      "integrations": {},
+      "type": "angular"
+    }
+  }
+}
