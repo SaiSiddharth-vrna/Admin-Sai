@@ -1,5 +1,5 @@
 
-const apiUrl = 'https://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service';
+const apiUrl = 'http://sandbox.vrnaplex.com:8079/orch-service';
 export const environment = {
   production: true,
   baseUrl: apiUrl,
