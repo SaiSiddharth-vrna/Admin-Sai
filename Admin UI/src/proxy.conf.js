@@ -6,7 +6,8 @@ const PROXY_CONFIG = [
       "/vrnaflow",
       "/aws-service",
     ],
-    target:/* "http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8079"*/"http://sandbox.vrnaplex.com:8079",
+    //target: "http://ec2-3-129-58-233.us-east-2.compute.amazonaws.com:8089",
+    target:"http://3.129.58.233:8089",
     secure: false,
     logLevel: "debug",
     changeOrigin: true,
@@ -25,7 +26,7 @@ const PROXY_CONFIG = [
       "/backdrops",
       "/posters",
     ],
-    target: "http://sandbox.vrnaplex.com:8079",
+    target: "http://ec2-3-129-58-233.us-east-2.compute.amazonaws.com:8089",
     secure: false, //8089 port
     logLevel: "debug",
     changeOrigin: true,

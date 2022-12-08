@@ -69,10 +69,10 @@ export class UserActiveComponent implements OnInit {
   onRowEditSave(user: any) {
     if (user.roleId) {
       delete this.clonedUsers[user.userId];
-      this.toast.show('success', 'Success', 'yes success!');
+      this.toast.show('success', 'Success', 'role is assigned successfully!');
     }
     else {
-      this.toast.show('error', 'Error', 'Invalid Price');
+      this.toast.show('error', 'Error', 'Please assign role!');
     }
     console.log(user)
   }

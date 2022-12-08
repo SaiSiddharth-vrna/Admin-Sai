@@ -1,10 +1,10 @@
 
-const apiUrl = 'http://sandbox.vrnaplex.com:8079/orch-service';
+const apiUrl = 'http://ec2-3-129-58-233.us-east-2.compute.amazonaws.com:8089';
 export const environment = {
   production: true,
   baseUrl: apiUrl,
   contentUrl: '/content-service/',
-  vrnaFlowUrl: '/vrnaflow/',
+  vrnaFlowUrl: '/orch-service/vrnaflow/',
   awsUrl: '/aws-service/aws/',
   s3Url: 'https://s3.ap-south-1.amazonaws.com'
 };

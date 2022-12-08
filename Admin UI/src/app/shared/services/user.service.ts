@@ -36,19 +36,19 @@ export class UserService {
   }
  
   approveUser(data: any) {
-    const url='http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service'+ environment.vrnaFlowUrl + 'approveuser';
+    const url= environment.baseUrl+environment.vrnaFlowUrl + 'approveuser';
     /*const url = environment.vrnaFlowUrl + `approveuser`;*/
     return this.http.post(url, data);
   }
 
   rejectUser(data: any) {
-    const url ='http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service'+ environment.vrnaFlowUrl + `rejectuser`;
+    const url =environment.baseUrl+ environment.vrnaFlowUrl + `rejectuser`;
     return this.http.post(url, data);
   }
 
   /* New User registration */
   userRegistration(data: any) {
-   const url='http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service'+ environment.vrnaFlowUrl + 'signup';
+   const url=environment.baseUrl+ environment.vrnaFlowUrl + 'signup';
    // const url = 'http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service/vrnaflow/'+ 'adduser';
     /*const url = this.baseUrl + 'signup';*/
     return this.http.post(url, data);

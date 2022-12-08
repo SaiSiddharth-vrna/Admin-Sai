@@ -9,7 +9,7 @@
             <div class="d-flex ">
                 <a class="view-btn my-auto me-2" type="submit"><i class="bi bi-eye-fill my-auto me-2"></i>View All</a>
                 <a type="button" class="me-2 my-auto p-2 text-dark">
-                    <i class="bi bi-arrow-clockwise"></i>
+                    <i class="bi bi-arrow-clockwise" (click)="getDataSource()"></i>
                 </a>
                 <a type="button" class="my-auto p-2 text-dark">
                     <i class="bi bi-three-dots-vertical"></i>
@@ -90,8 +90,8 @@
 
                     <td class="text-center action-column">
                         <a class="btn me-1 btn-xs btn-danger" pTooltip="Reject" tooltipPosition="bottom"
-                            tooltipStyleClass="danger"><i class="bi bi-x-lg"></i></a>
-                        <a (click)="confirm1()"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i>Approve </a>
+                            tooltipStyleClass="danger" ><i class="bi bi-x-lg"></i></a>
+                        <a (click)="confirmApproval(movie)"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i>Approve </a>
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@
                     <td class="text-center action-column">
                         <a class="btn me-1 btn-xs btn-danger" pTooltip="Reject" tooltipPosition="bottom"
                             tooltipStyleClass="danger"><i class="bi bi-x-lg"></i></a>
-                        <a (click)="confirm1()"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i> Approve </a>
+                        <a (click)="confirmApproval(movie)"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i> Approve </a>
                     </td>
                 </tr>
                 <tr>
@@ -149,13 +149,12 @@
                     <td class="text-center action-column">
                         <a class="btn me-1 btn-xs btn-danger" pTooltip="Reject" tooltipPosition="bottom"
                             tooltipStyleClass="danger"><i class="bi bi-x-lg"></i></a>
-                        <a (click)="confirm1()"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i> Approve </a>
+                        <a (click)="confirmApproval(movie)"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i> Approve </a>
                     </td>
                 </tr>
                 <tr>
                     <td class="table-poster">
-                        <img src="assets/img/vs.jpg" alt="contact-img" title="contact-img"
-                            class="poster">
+                        <img src="assets/img/vs.jpg" alt="contact-img" title="contact-img"class="poster">
                     </td>
 
                     <td>
@@ -178,7 +177,7 @@
                     <td class="text-center action-column">
                         <a class="btn me-1 btn-xs btn-danger" pTooltip="Reject" tooltipPosition="bottom"
                             tooltipStyleClass="danger"><i class="bi bi-x-lg"></i></a>
-                        <a  (click)="confirm1()"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i> Approve </a>
+                        <a  (click)="confirmApproval(movie)"  class="btn ms-1 btn-xs btn-primary"><i class="bi bi-check-lg"></i> Approve </a>
                     </td>
                     
                 </tr>

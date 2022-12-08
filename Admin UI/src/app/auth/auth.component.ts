@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, Validators } from '@angular/forms';
 import { Checkbox } from 'primeng/checkbox';
+import { GalleriaThumbnails } from 'primeng/galleria';
 import { ToastService } from '../shared/services/toast/toast.service';
 import { AuthService } from './auth.service';
-import { SocialAuthService } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 export interface Auth {
@@ -42,17 +42,22 @@ export class AuthComponent {
     
     
   ) { }
-  /*signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+ 
+  setCookie(){
+    var e = (<HTMLInputElement>document.getElementById('email')).value;
+    var p =(<HTMLInputElement>document.getElementById('password')).value;
+    document.cookie = "email = "+e+";path = http://localhost:4200";
+    document.cookie = "password"+e+";path = http://localhost:4200";
 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
+  getcookiedata()
+ {
+ console.log(document.cookie);
+ }
 
-  signOut(): void {
-    this.authService.signOut();
-  }*/
+ getcookie(){
+  
+ }
 
   onSubmit() {
     if (this.loginForm.valid) {

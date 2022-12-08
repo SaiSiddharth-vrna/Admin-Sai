@@ -129,12 +129,13 @@ $width: 70px;
 }
 
 .theme-toggler{
-    background:yellow;
-    color: black;
+    background:rgb(251, 251, 44);
+    color: rgb(21, 19, 19);
     display: flex;
     justify-content: space-between;
     height: 1.6rem;
-    width: 4.2rem;
+    width: 4.4rem;
+    
     border-radius: 5px;
     cursor: pointer;
 }

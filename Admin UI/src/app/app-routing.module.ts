@@ -7,6 +7,8 @@ import { AuthGuard } from './shared/gaurds/auth.gaurd';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { UserProfileComponent } from './main/pages/user-profile/user-profile.component';
 import { SettingsComponent } from './main/pages/settings/settings.component';
+import { SupportComponent } from './main/pages/support/support.component';
+
 
 const routes: Routes = [
   {
@@ -34,7 +36,7 @@ const routes: Routes = [
   },
   {
     path:'user-profile',component:UserProfileComponent
-  }
+  },
   
 ];
 

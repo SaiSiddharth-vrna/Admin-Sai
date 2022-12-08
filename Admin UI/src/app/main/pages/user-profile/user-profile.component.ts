@@ -10,7 +10,7 @@ import { FormBuilder, FormControl, Validators, FormGroup, EmailValidator } from 
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
- value = EmailValidator;
+
 
   constructor() { }
 

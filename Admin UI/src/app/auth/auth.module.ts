@@ -76,7 +76,7 @@ const authRouting = RouterModule.forChild([
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatInputModule,
+    MatInputModule
   ]
 }) 
 export class AuthModule { }

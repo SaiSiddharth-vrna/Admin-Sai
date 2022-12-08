@@ -34,18 +34,18 @@ export class MovieService {
   }
 
   approveMovie(movieId: any) {
-    const url='http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service' +  environment.vrnaFlowUrl + 'approvemovie';
+    const url='http://ec2-3-129-58-233.us-east-2.compute.amazonaws.com:8089' +  environment.vrnaFlowUrl + 'approvemovie';
     /*const url = environment.vrnaFlowUrl + `approvemovie`;*/
     return this.http.post(url, movieId);
   }
 
   rejectMovie(movieId: any) {
-    const url='http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service'+ environment.vrnaFlowUrl + 'rejectmovie';
+    const url = this.baseUrl + environment.vrnaFlowUrl + 'rejectmovie';
     return this.http.post(url, movieId);
   }
 
   create(data: any) {
-    const url='http://ec2-3-21-205-116.us-east-2.compute.amazonaws.com:8089/orch-service' +  environment.vrnaFlowUrl + 'addmovie';
+    const url = this.baseUrl +  environment.vrnaFlowUrl + 'addmovie';
     return this.http.post(url, data);
   }
 

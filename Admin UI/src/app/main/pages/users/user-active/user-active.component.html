@@ -46,8 +46,11 @@
             <td class="role-column">
                 <p-cellEditor class="w-100">
                     <ng-template pTemplate="input">
-                        <p-dropdown class="w-100" [(ngModel)]="user.roleId" [options]="roles" optionLabel="roleName"
-                            optionValue="roleId">
+                        <p-dropdown class="w-100 text-light" [(ngModel)]="user.roleId" [options]="roles" optionLabel="Admin"
+                            optionValue="Admin">
+                        </p-dropdown>
+                        <p-dropdown class="w-100 text-light" [(ngModel)]="user.roleId" [options]="roles" optionLabel="Partner"
+                            optionValue="Partner">
                         </p-dropdown>
                     </ng-template>
                     <ng-template pTemplate="output">

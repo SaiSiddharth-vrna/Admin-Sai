@@ -84,6 +84,35 @@ export class SidemenuComponent implements OnInit {
      
       ]
     },
+    {
+      id:5,
+      label:'Help & Support',
+      icon:'local_post_office',
+      link:'/support',
+      childMenu:[{
+        label:'add-ticket',
+        icon:'add_box',
+        link:'/support/add-ticket'
+      },
+      {
+        label:'edit ticket',
+        icon:'edit_note',
+        link:''
+      },
+      {
+        label:'view ticket',
+        icon:'local_activity',
+        link:''
+      },
+      {
+        label:'close ticket',
+        icon:'disabled_by_default',
+        link:''
+      }
+       
+      ]
+    }
+
     /*{
       label:'User-profile table',
       icon:'manage_accounts',
